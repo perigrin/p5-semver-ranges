@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+use 5.10.0;
+use lib qw(lib);
+
+use SemVer::Ranges;
+
+=for later
+use Getopt::Long;
+GetOptions(
+    'range|r=s'            => \my $range,
+    'increment|i=i'        => \my $increment,
+    'preid=s'              => \my $preid,
+    'include-prerelease|p' => \my $prerelease,
+    'coerce|c'             => \my $coerce,
+);
+=cut
+
+say for sort { SemVer::Ranges::compare($a, $b) } @ARGV;
+
